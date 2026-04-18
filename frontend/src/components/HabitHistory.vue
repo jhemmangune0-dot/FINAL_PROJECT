@@ -8,7 +8,8 @@ const error = ref('')
 
 const fetchHabits = async () => {
   try {
-    const res = await axios.get('http://localhost:3000/api/habits')
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+    const res = await axios.get(`${API_URL}/api/habits`)
     habits.value = res.data
   } catch (err) {
     error.value = 'Failed to load history. Ensure backend is running and database is configured.'

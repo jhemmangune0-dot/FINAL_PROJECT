@@ -24,7 +24,8 @@ const submitHabit = async () => {
   success.value = false
   
   try {
-    const res = await axios.post('http://localhost:3000/api/habits', {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+    const res = await axios.post(`${API_URL}/api/habits`, {
       title: title.value,
       category: category.value,
       description: description.value
